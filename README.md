@@ -40,17 +40,53 @@ You can use the `setup` method to customize different things:
 ```ruby
 # config/initializers/sudo_rails.rb
 SudoRails.setup do |config|
+  # On/off engine
   config.enabled = true
-  config.sudo_session_time = 20.minutes # default is 1 hour
-  config.layout = 'admin'
+
+  # Sudo mode sessions duration, default is 1 hour
+  config.sudo_session_time = 20.minutes
+
+  # Page styles
   config.custom_logo = 'logos/medium_dark.png'
   config.primary_color = '#1A7191'
+  config.layout = 'admin'
+
+  # Confirmation strategy
   config.reset_pass_link = '/users/password/new'
   config.confirm_with = -> (context, password) {
     user = context.current_user
     user.valid_password?(password)
   }
 end
+```
+
+### Styling
+
+Using the `custom_logo` and `primary_color` options, you can customize the confimation page. In case you want full control of styles, you can use your own layout using the `layout` option.
+
+### Confirmation strategy
+
+You should define how to validate the password using the `confirm_with` option. It's a `lambda` that receives 2 objects: the controller instance (`context`) and the password from the user. By default, the gem comes with `Devise` integration.
+
+Examples:
+
+```ruby
+# Devise implementation
+config.confirm_with = -> (context, password) {
+  user = context.current_user
+  user.valid_password?(password)
+}
+
+# Other possible implementations
+config.confirm_with = -> (context, password) {
+  user = context.current_user
+  User.authenticate?(user.email, password)
+}
+
+config.confirm_with = -> (context, password) {
+  user = context.current_user
+  user.admin? && password == ENV['SUPER_SECRET_PASSWORD']
+}
 ```
 
 ## Development

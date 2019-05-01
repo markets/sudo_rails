@@ -18,8 +18,10 @@ module SudoRails
     end
 
     def confirm_sudo?
-      block = SudoRails.confirm_with
-      block.call(self, params[:password])
+      strategy = SudoRails.confirm_with
+      raise(ArgumentError, 'Please, provide an strategy via SudoRails.confirm_with') unless strategy
+
+      strategy.call(self, params[:password])
     end
   end
 end
