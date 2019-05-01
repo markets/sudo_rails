@@ -5,19 +5,19 @@
 
 > Sudo mode for your Rails controllers
 
-Protect any Rails action with password confirmation.
+Protect :lock: any Rails action with a customizable password confirmation strategy.
 
 ```ruby
-class AdminController < ApplicationController
+class SecretController < ApplicationController
   sudo
 end
 ```
 
-*Inspired by [GitHub Sudo mode](https://help.github.com/en/articles/sudo-mode).*
+*Inspired by Unix `sudo` command and [GitHub Sudo mode](https://help.github.com/en/articles/sudo-mode).*
 
 ## Installation
 
-Add this line to you Gemfile and then execute `bundle install`:
+Add this line to your Gemfile and then execute `bundle install`:
 
 ```ruby
 gem 'sudo_rails'
@@ -43,7 +43,8 @@ SudoRails.setup do |config|
   config.enabled = true
   config.sudo_session_time = 20.minutes # default is 1 hour
   config.layout = 'admin'
-  config.custom_logo = 'logos/medium_logo.png'
+  config.custom_logo = 'logos/medium_dark.png'
+  config.primary_color = '#1A7191'
   config.reset_pass_link = '/users/password/new'
   config.confirm_with = -> (context, password) {
     user = context.current_user
@@ -54,7 +55,7 @@ end
 
 ## Development
 
-Any kind of feedback, bug report, idea or enhancement are really appreciated :tada:
+Any kind of feedback, bug report, idea or enhancement are really appreciated.
 
 To contribute, just fork the repo, hack on it and send a pull request. Don't forget to add tests for behaviour changes and run the test suite:
 
