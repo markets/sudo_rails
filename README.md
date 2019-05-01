@@ -1,3 +1,8 @@
+# Sudo Rails
+
+[![Gem](https://img.shields.io/gem/v/sudo_rails.svg?style=flat-square)](https://rubygems.org/gems/sudo_rails)
+[![Build Status](https://travis-ci.org/markets/sudo_rails.svg)](https://travis-ci.org/markets/sudo_rails)
+
 > Sudo mode for your Rails controllers
 
 Protect any Rails action with password confirmation.
