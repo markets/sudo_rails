@@ -6,5 +6,4 @@ en:
     forgot_pass: Forgot your password?
     tip: |-
       You are entering <b>sudo mode</b>.<br>
-
-      We won’t ask for your password again for <i>%{duration}</i>.
+      We won’t ask for your password again for <i>%{session_duration}</i>.
