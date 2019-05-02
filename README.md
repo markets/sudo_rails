@@ -5,7 +5,7 @@
 
 > Sudo mode for your Rails controllers
 
-Protect :lock: any Rails action with a customizable password confirmation strategy.
+:lock: Protect any Rails action with a customizable password confirmation strategy.
 
 ```ruby
 class SecretController < ApplicationController
@@ -35,7 +35,7 @@ end
 
 ### Configuration
 
-You can use the `setup` method to customize different things:
+You can use the `setup` method to configure and customize different things:
 
 ```ruby
 # config/initializers/sudo_rails.rb
@@ -62,11 +62,11 @@ end
 
 ### Styling
 
-Using the `custom_logo` and `primary_color` options, you can customize the confimation page. In case you want full control of styles, you can use your own layout using the `layout` option.
+Using the `custom_logo` and `primary_color` options, you can customize the confirmation page. In case you want full control of the styles, you can use your own layout using the `layout` option.
 
 ### Confirmation strategy
 
-You should define how to validate the password using the `confirm_with` option. It's a `lambda` that receives 2 objects: the controller instance (`context`) and the password from the user. By default, the gem comes with `Devise` integration.
+You should define how to validate the password using the `confirm_with` option. It must be a `lambda`, which will receive 2 arguments: the controller instance (`context`) and the password from the user. By default, the gem comes with `Devise` integration.
 
 Examples:
 
