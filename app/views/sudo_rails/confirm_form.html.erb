@@ -3,22 +3,21 @@
     <%= image_tag SudoRails.custom_logo %>
   <% end %>
 
-  <h2>Confirm password to continue</h2>
+  <h2><%= t('sudo_rails.page_header') %></h2>
 </header>
 
 <div class='sudo-form'>
   <%= form_tag '/sudo_rails/confirm' do |f| %>
     <%= hidden_field_tag :target_path, params[:target_path] || request.url %>
-    <%= password_field_tag :password, nil, required: true, placeholder: 'Password' %>
-    <%= submit_tag 'Confirm password' %>
+    <%= password_field_tag :password, nil, required: true, placeholder: t('sudo_rails.password') %>
+    <%= submit_tag t('sudo_rails.button') %>
   <% end %>
 
   <% if SudoRails.reset_pass_link %>
-    <%= link_to 'Forgot your password?', SudoRails.reset_pass_link, target: '_blank' %>
+    <%= link_to t('sudo_rails.forgot_pass'), SudoRails.reset_pass_link, target: '_blank' %>
   <% end %>
 </div>
 
 <div class='sudo-tip'>
-  You are entering <b>sudo mode</b>.<br>
-  We won’t ask for your password again for <i><%= time_ago_in_words(SudoRails.sudo_session_duration.ago) %></i>.
+  <%= t('sudo_rails.tip', duration: time_ago_in_words(SudoRails.sudo_session_duration.ago)).html_safe %>
 </div>

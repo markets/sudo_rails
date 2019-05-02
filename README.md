@@ -96,6 +96,10 @@ config.confirm_strategy = -> (context, password) {
 }
 ```
 
+### I18n
+
+`sudo_rails` uses I18n by default. Take a look at our [locale file](config/locales/en.yml) to check all available messages.
+
 ## Development
 
 Any kind of feedback, bug report, idea or enhancement are really appreciated.

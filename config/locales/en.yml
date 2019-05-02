@@ -1,0 +1,10 @@
+en:
+  sudo_rails:
+    page_header: Confirm password to continue
+    button: Confirm password
+    password: Password
+    forgot_pass: Forgot your password?
+    tip: |-
+      You are entering <b>sudo mode</b>.<br>
+
+      We won’t ask for your password again for <i>%{duration}</i>.
