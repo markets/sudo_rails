@@ -30,6 +30,12 @@ module SudoRails
 
       strategy.call(context, password)
     end
+
+    def valid_sudo_session?(started_at)
+      return false unless started_at
+
+      DateTime.parse(started_at) + sudo_session_duration > Time.zone.now
+    end
   end
 
   self.enabled = true

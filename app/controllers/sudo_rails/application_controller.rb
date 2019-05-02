@@ -4,7 +4,7 @@ module SudoRails
 
     def confirm
       if request.post? && SudoRails.confirm?(self, params[:password])
-        session[:sudo_rails_session] = Time.zone.now
+        session[:sudo_rails_session] = Time.zone.now.to_s
         redirect_to params[:target_path]
       else
         render 'sudo_rails/confirm_form', layout: SudoRails.get_layout
