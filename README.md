@@ -13,7 +13,7 @@ class SecretController < ApplicationController
 end
 ```
 
-*Inspired by Unix `sudo` command and [GitHub Sudo mode](https://help.github.com/en/articles/sudo-mode).*
+*Inspired by [Unix `sudo` command](https://en.wikipedia.org/wiki/Sudo) and [GitHub Sudo mode](https://help.github.com/en/articles/sudo-mode).*
 
 ## Installation
 
@@ -44,19 +44,19 @@ SudoRails.setup do |config|
   config.enabled = true
 
   # Sudo mode sessions duration, default is 1 hour
-  config.sudo_session_time = 20.minutes
+  config.sudo_session_duration = 20.minutes
 
-  # Page styles
+  # Default confirmation page styles
   config.custom_logo = 'logos/medium_dark.png'
   config.primary_color = '#1A7191'
   config.layout = 'admin'
 
   # Confirmation strategy
-  config.reset_pass_link = '/users/password/new'
-  config.confirm_with = -> (context, password) {
+  config.confirm_strategy = -> (context, password) {
     user = context.current_user
     user.valid_password?(password)
   }
+  config.reset_pass_link = '/users/password/new'
 end
 ```
 
@@ -66,26 +66,33 @@ Using the `custom_logo` and `primary_color` options, you can customize the confi
 
 ### Confirmation strategy
 
-You should define how to validate the password using the `confirm_with` option. It must be a `lambda`, which will receive 2 arguments: the controller instance (`context`) and the password from the user. By default, the gem comes with `Devise` integration.
+You should define how to validate the password using the `confirm_strategy` option. It must be a `lambda`, which will receive 2 arguments: the controller instance (`context`) and the password from the user.
 
-Examples:
+By default, the gem ships with `Devise` and `Clearance` integration.
+
+Implementation examples:
 
 ```ruby
 # Devise implementation
-config.confirm_with = -> (context, password) {
+config.confirm_strategy = -> (context, password) {
   user = context.current_user
   user.valid_password?(password)
 }
 
-# Other possible implementations
-config.confirm_with = -> (context, password) {
+# has_secure_password implementation
+config.confirm_strategy = -> (context, password) {
   user = context.current_user
-  User.authenticate?(user.email, password)
+  user.authenticate(password)
 }
 
-config.confirm_with = -> (context, password) {
+# Other custom implementation
+config.confirm_strategy = -> (context, password) {
   user = context.current_user
   user.admin? && password == ENV['SUPER_SECRET_PASSWORD']
+}
+
+config.confirm_strategy = -> (context, password) {
+  Auth.call(context.current_user.email, password)
 }
 ```
 

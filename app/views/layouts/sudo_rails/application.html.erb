@@ -3,7 +3,7 @@
 <head>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag "sudo_rails/application", media: "all" %>
-  <%= render 'sudo_rails/inject_custom_styles' if SudoRails.primary_color %>
+  <%= render 'sudo_rails/inject_custom_styles' if SudoRails.custom_styles? %>
 </head>
 <body>
   <%= yield %>

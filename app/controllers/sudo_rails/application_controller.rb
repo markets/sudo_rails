@@ -3,7 +3,7 @@ module SudoRails
     before_action :sudo_enabled?
 
     def confirm
-      if request.post? && confirm_sudo?
+      if request.post? && SudoRails.confirm?(self, params[:password])
         session[:sudo_rails_session] = Time.zone.now
         redirect_to params[:target_path]
       else
@@ -15,13 +15,6 @@ module SudoRails
 
     def sudo_enabled?
       SudoRails.enabled || head(404, message: "SudoRails disabled")
-    end
-
-    def confirm_sudo?
-      strategy = SudoRails.confirm_with
-      raise(ArgumentError, 'Please, provide an strategy via SudoRails.confirm_with') unless strategy
-
-      strategy.call(self, params[:password])
     end
   end
 end

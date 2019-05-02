@@ -8,8 +8,8 @@ module SudoRails
                   :layout,
                   :custom_logo,
                   :primary_color,
-                  :confirm_with,
-                  :sudo_session_time,
+                  :confirm_strategy,
+                  :sudo_session_duration,
                   :reset_pass_link
 
     def setup
@@ -19,16 +19,22 @@ module SudoRails
     def get_layout
       layout || 'sudo_rails/application'
     end
+
+    def custom_styles?
+      primary_color.present?
+    end
+
+    def confirm?(context, password)
+      strategy = confirm_strategy
+      raise(ArgumentError, 'Please, provide an strategy via SudoRails.confirm_strategy') unless strategy
+
+      strategy.call(context, password)
+    end
   end
 
   self.enabled = true
-  self.sudo_session_time = 1.hour
-
-  if defined?(Devise)
-    self.confirm_with = -> (context, password) {
-      user = context.current_user
-      user.valid_password?(password)
-    }
-    self.reset_pass_link = "/users/password/new"
-  end
+  self.sudo_session_duration = 1.hour
 end
+
+require 'sudo_rails/integrations/devise'    if defined?(Devise)
+require 'sudo_rails/integrations/clearance' if defined?(Clearance)

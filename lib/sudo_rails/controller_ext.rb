@@ -14,7 +14,7 @@ module SudoRails
     def self.valid_sudo_session?(started_at)
       return false unless started_at
 
-      Time.parse(started_at) + SudoRails.sudo_session_time > Time.zone.now
+      Time.parse(started_at) + SudoRails.sudo_session_duration > Time.zone.now
     end
   end
 end
