@@ -1,7 +1,7 @@
 body {
   text-align: center;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: #f9f9f9;
+  background-color: #ececec;
   transform: translateY(20%);
 }
 
@@ -16,10 +16,10 @@ body {
 .sudo-form {
   background-color: #fff;
   border-radius: 5px;
-  border: 1px solid #d8dee2;
   padding: 20px;
   margin: 10px auto;
   width: 340px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 
   input {
     display: block;
@@ -28,18 +28,19 @@ body {
     line-height: 30px;
     padding: 2px;
     border-radius: 5px;
-    border: 1px solid #d8dee2;
+    border: 1px solid #ececec;
   }
 
   input[type="submit"] {
     margin: 20px auto;
     width: 60%;
     padding: 4px;
-    background-color: #d8dee2;
+    background-color: #ececec;
     border-radius: 25px;
   }
 }
 
 .sudo-tip {
+  margin-top: 20px;
   font-size: 14px;
 }

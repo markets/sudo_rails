@@ -62,7 +62,7 @@ end
 
 ### Styling
 
-Using the `custom_logo` and `primary_color` options, you can customize the confirmation page. In case you want full control of the styles, you can use your own layout using the `layout` option.
+Using the `custom_logo` and `primary_color` options, you can customize the confirmation page. In case you want full control of the styles, you can use your own layout (and consequently your own styles too) using the `layout` option.
 
 ### Confirmation strategy
 
