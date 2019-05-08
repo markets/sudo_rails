@@ -39,7 +39,7 @@ module SudoRails
   end
 
   self.enabled = true
-  self.sudo_session_duration = 1.hour
+  self.sudo_session_duration = 30.minutes
 end
 
 require 'sudo_rails/integrations/devise'    if defined?(Devise)

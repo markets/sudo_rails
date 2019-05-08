@@ -43,10 +43,10 @@ SudoRails.setup do |config|
   # On/off engine
   config.enabled = true
 
-  # Sudo mode sessions duration, default is 1 hour
-  config.sudo_session_duration = 20.minutes
+  # Sudo mode sessions duration, default is 30 minutes
+  config.sudo_session_duration = 10.minutes
 
-  # Default confirmation page styles
+  # Confirmation page styling
   config.custom_logo = 'logos/medium_dark.png'
   config.primary_color = '#1A7191'
   config.layout = 'admin'
