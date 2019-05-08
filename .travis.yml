@@ -6,8 +6,8 @@ rvm:
   - 2.6.3
   - 2.5.5
 gemfile:
-  - spec/gemfiles/rails_6.0.gemfile
-  - spec/gemfiles/rails_5.2.gemfile
+  - gemfiles/rails_6.0.gemfile
+  - gemfiles/rails_5.2.gemfile
 matrix:
   allow_failures:
     - rvm: ruby-head
