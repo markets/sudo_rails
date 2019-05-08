@@ -12,7 +12,15 @@ RSpec.describe SudoRails do
       password == 'foo'
     }
 
-    expect(SudoRails.confirm?(nil, 'foo')).to be_truthy
-    expect(SudoRails.confirm?(nil, 'bar')).to be_falsey
+    expect(SudoRails.confirm?(nil, 'foo')).to eq true
+    expect(SudoRails.confirm?(nil, 'bar')).to eq false
+  end
+
+  it "#valid_sudo_session?" do
+    timestamp = Time.zone.now
+    expect(SudoRails.valid_sudo_session?(timestamp.to_s)).to eq true
+
+    timestamp = timestamp - (SudoRails.sudo_session_duration + 1.minute)
+    expect(SudoRails.valid_sudo_session?(timestamp.to_s)).to eq false
   end
 end
