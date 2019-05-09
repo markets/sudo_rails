@@ -7,4 +7,8 @@ require 'sudo_rails'
 RSpec.configure do |config|
   config.order = 'random'
   config.disable_monkey_patching!
+
+  config.before do
+    SudoRails.enabled = true
+  end
 end
