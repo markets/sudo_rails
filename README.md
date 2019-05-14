@@ -50,6 +50,7 @@ SudoRails.setup do |config|
   # Confirmation page styling
   config.custom_logo = 'logos/medium_dark.png'
   config.primary_color = '#1A7191'
+  config.background_color = '#1A7191'
   config.layout = 'admin'
 
   # Confirmation strategy
@@ -63,7 +64,7 @@ end
 
 ### Styling
 
-Using the `custom_logo` and `primary_color` options, you can customize the confirmation page. In case you want full control of the styles, you can use your own layout (and consequently your own styles too) using the `layout` option.
+Using the `custom_logo`, `primary_color` and `background_color` options, you can customize the confirmation page. In case you want full control of the styles, you can use your own layout (and consequently your own styles too) using the `layout` option.
 
 ### Confirmation strategy
 
