@@ -22,8 +22,8 @@ a {
   border-radius: 5px;
   padding: 20px;
   margin: 10px auto;
-  width: 340px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  max-width: 340px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 
   input {
     display: block;
@@ -45,6 +45,6 @@ a {
 }
 
 .sudo-tip {
-  margin-top: 20px;
+  margin-top: 30px;
   font-size: 14px;
 }

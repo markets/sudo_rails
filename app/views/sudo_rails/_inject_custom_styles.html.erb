@@ -1,8 +1,19 @@
 <style type="text/css">
-  a {
-    color: <%= SudoRails.primary_color %>;
-  }
-  .sudo-form input[type="submit"] {
-    background-color: <%= SudoRails.primary_color %>;
-  }
+  <% if SudoRails.background_color.present? %>
+    body {
+      background-color: <%= SudoRails.background_color %>;
+      color: <%= SudoRails.color_contrast(SudoRails.background_color) %>;
+    }
+  <% end %>
+
+  <% if SudoRails.primary_color.present? %>
+    a {
+      color: <%= SudoRails.primary_color %>;
+    }
+
+    .sudo-form input[type="submit"] {
+      background-color: <%= SudoRails.primary_color %>;
+      color: <%= SudoRails.color_contrast(SudoRails.primary_color) %>;
+    }
+  <% end %>
 </style>

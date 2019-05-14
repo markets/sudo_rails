@@ -1,27 +1,23 @@
 require "sudo_rails/version"
 require "sudo_rails/controller_ext"
+require "sudo_rails/styling"
 require "sudo_rails/engine"
 
 module SudoRails
   class << self
+    include Styling
+
     attr_accessor :enabled,
+                  :confirm_strategy,
+                  :sudo_session_duration,
+                  :reset_pass_link,
                   :layout,
                   :custom_logo,
                   :primary_color,
-                  :confirm_strategy,
-                  :sudo_session_duration,
-                  :reset_pass_link
+                  :background_color
 
     def setup
       yield(self) if block_given?
-    end
-
-    def get_layout
-      layout || 'sudo_rails/application'
-    end
-
-    def custom_styles?
-      primary_color.present?
     end
 
     def confirm?(context, password)
