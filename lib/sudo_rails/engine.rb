@@ -4,7 +4,7 @@ module SudoRails
 
     initializer "sudo_rails.controller_ext" do
       ActiveSupport.on_load(:action_controller) do
-        extend SudoRails::ControllerExt
+        include SudoRails::ControllerExt
       end
     end
 
