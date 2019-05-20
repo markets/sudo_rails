@@ -10,7 +10,7 @@ a {
 }
 
 .sudo-header {
-  margin: 40px auto;
+  margin: 2em auto;
 
   img {
     margin-top: -60px;
@@ -21,8 +21,8 @@ a {
 .sudo-form {
   background-color: #fff;
   border-radius: 5px;
-  padding: 20px;
-  margin: 10px auto;
+  padding: 2em;
+  margin: 0 auto;
   max-width: 340px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 
@@ -30,22 +30,24 @@ a {
     display: block;
     width: 100%;
     font-size: 16px;
-    line-height: 30px;
-    padding: 2px;
+    line-height: 2em;
+    padding: 4px;
     border-radius: 5px;
     border: 1px solid #ececec;
   }
 
   input[type="submit"] {
-    margin: 20px auto;
+    cursor: pointer;
+    margin: 1em auto;
     width: 60%;
     padding: 4px;
     background-color: #ececec;
     border-radius: 25px;
+    border: none;
   }
 }
 
 .sudo-tip {
-  margin-top: 30px;
+  margin-top: 2em;
   font-size: 14px;
 }
