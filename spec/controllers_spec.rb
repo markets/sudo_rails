@@ -6,6 +6,20 @@ RSpec.describe ApplicationController, type: :controller do
 
     expect(response.body).to eq("index")
   end
+
+  describe 'provided helpers' do
+    it '#reset_sudo_session!' do
+      @controller.reset_sudo_session!
+
+      expect(session[:sudo_session]).to be nil
+    end
+
+    it '#extend_sudo_session!' do
+      @controller.extend_sudo_session!
+
+      expect(session[:sudo_session]).not_to be nil
+    end
+  end
 end
 
 RSpec.describe SudoRails::ApplicationController, type: :controller do

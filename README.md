@@ -34,6 +34,13 @@ class SettingsController < ApplicationController
 end
 ```
 
+Under the hood, the `sudo` method delegates to a `before_action` callback, so you're able to pass the following options: `:only`, `:except`, `:if` and `:unless`.
+
+The gem also provides a couple of controller helpers, useful to manually manage the `sudo` session status:
+
+- `reset_sudo_session!`: resets the current sudo session, if any.
+- `extend_sudo_session!`: marks the current session as a valid sudo session.
+
 ### Configuration
 
 You can use the `setup` method to configure and customize different things:
@@ -53,11 +60,13 @@ SudoRails.setup do |config|
   config.background_color = '#1A7191'
   config.layout = 'admin'
 
-  # Confirmation strategy
+  # Confirmation strategy implementation
   config.confirm_strategy = -> (context, password) {
     user = context.current_user
     user.valid_password?(password)
   }
+
+  # Reset password link
   config.reset_pass_link = '/users/password/new'
 end
 ```
@@ -70,7 +79,7 @@ Using the `custom_logo`, `primary_color` and `background_color` options, you can
 
 You should define how to validate the password using the `confirm_strategy` option. It must be a `lambda`, which will receive 2 arguments: the controller instance (`context`) and the password from the user.
 
-By default, the gem ships with `Devise` and `Clearance` integration.
+By default, the gem ships with `Devise` and `Clearance` integration. Check it [here](lib/sudo_rails/integrations/).
 
 Implementation examples:
 
@@ -87,7 +96,7 @@ config.confirm_strategy = -> (context, password) {
   user.authenticate(password)
 }
 
-# Other custom implementation
+# Other custom implementations
 config.confirm_strategy = -> (context, password) {
   user = context.current_user
   user.admin? && password == ENV['SUPER_SECRET_PASSWORD']
