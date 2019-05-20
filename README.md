@@ -75,6 +75,8 @@ end
 
 Using the `custom_logo`, `primary_color` and `background_color` options, you can customize the confirmation page. In case you want full control of the styles, you can use your own layout (and consequently your own styles too) using the `layout` option.
 
+See some [examples here](support/images/).
+
 ### Confirmation strategy
 
 You should define how to validate the password using the `confirm_strategy` option. It must be a `lambda`, which will receive 2 arguments: the controller instance (`context`) and the password from the user.
