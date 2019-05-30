@@ -2,6 +2,7 @@ require "sudo_rails/version"
 require "sudo_rails/controller_ext"
 require "sudo_rails/styling"
 require "sudo_rails/engine"
+require "sassc-rails"
 
 module SudoRails
   class << self
