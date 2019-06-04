@@ -1,10 +1,10 @@
-<header class='sudo-header'>
+<div class='sudo-header'>
   <% if SudoRails.custom_logo %>
     <%= image_tag SudoRails.custom_logo %>
   <% end %>
 
   <h2><%= t('sudo_rails.page_header') %></h2>
-</header>
+</div>
 
 <div class='sudo-form'>
   <%= form_tag '/sudo_rails/confirm' do |f| %>
