@@ -1,10 +1,20 @@
 RSpec.describe ApplicationController, type: :controller do
-  it 'sudo filter skips if engine is disabled disabled' do
-    SudoRails.enabled = false
+  render_views
 
-    get :index
+  describe 'sudo filter' do
+    it 'skips if engine is disabled disabled' do
+      SudoRails.enabled = false
 
-    expect(response.body).to eq("index")
+      get :index
+
+      expect(response.body).to eq("index")
+    end
+
+    it 'renders confirmation form' do
+      get :index
+
+      expect(response.body).to match(I18n.t('sudo_rails.page_header'))
+    end
   end
 
   describe 'provided helpers' do
