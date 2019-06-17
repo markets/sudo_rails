@@ -23,8 +23,6 @@ RSpec.describe ApplicationController, type: :controller do
 end
 
 RSpec.describe SudoRails::ApplicationController, type: :controller do
-  render_views
-
   before(:all) do
     SudoRails.confirm_strategy = -> (_, password) { password == 'foo' }
     @target_path = '/'
