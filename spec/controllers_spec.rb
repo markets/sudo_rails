@@ -1,10 +1,20 @@
 RSpec.describe ApplicationController, type: :controller do
-  it 'sudo filter skips if engine is disabled disabled' do
-    SudoRails.enabled = false
+  render_views
 
-    get :index
+  describe 'sudo filter' do
+    it 'skips if engine is disabled' do
+      SudoRails.enabled = false
 
-    expect(response.body).to eq("index")
+      get :index
+
+      expect(response.body).to eq("index")
+    end
+
+    it 'renders confirmation form if engine is enabled' do
+      get :index
+
+      expect(response.body).to match(I18n.t('sudo_rails.page_header'))
+    end
   end
 
   describe 'provided helpers' do
@@ -23,21 +33,23 @@ RSpec.describe ApplicationController, type: :controller do
 end
 
 RSpec.describe SudoRails::ApplicationController, type: :controller do
-  render_views
-
   before(:all) do
     SudoRails.confirm_strategy = -> (_, password) { password == 'foo' }
+    @target_path = '/'
   end
 
-  it 'redirects to target path if strategy resolves' do
-    post :confirm, params: { password: 'foo', target_path: '/' }
+  it 'if strategy resolves, redirects to target path with a valid sudo session' do
+    post :confirm, params: { password: 'foo', target_path: @target_path }
 
-    expect(response).to redirect_to '/'
+    expect(SudoRails.valid_sudo_session?(session[:sudo_session])).to eq(true)
+    expect(response).to redirect_to @target_path
+
   end
 
-  it 'renders confirmation form again if strategy does not resolve' do
-    post :confirm, params: { password: 'bar', target_path: '/' }
+  it 'if strategy does not resolve, redirects to target with an invalid sudo session' do
+    post :confirm, params: { password: 'bar', target_path: @target_path }
 
-    expect(response.body).to match(I18n.t('sudo_rails.page_header'))
+    expect(SudoRails.valid_sudo_session?(session[:sudo_session])).to eq(false)
+    expect(response).to redirect_to @target_path
   end
 end
