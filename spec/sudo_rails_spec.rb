@@ -22,5 +22,8 @@ RSpec.describe SudoRails do
 
     timestamp = timestamp - (SudoRails.sudo_session_duration + 1.minute)
     expect(SudoRails.valid_sudo_session?(timestamp.to_s)).to eq false
+
+    SudoRails.sudo_session_duration = nil
+    expect(SudoRails.valid_sudo_session?(timestamp.to_s)).to eq true
   end
 end

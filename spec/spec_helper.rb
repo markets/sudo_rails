@@ -10,5 +10,6 @@ RSpec.configure do |config|
 
   config.before do
     SudoRails.enabled = true
+    # SudoRails.sudo_session_duration = 1.minute
   end
 end
