@@ -71,9 +71,9 @@ SudoRails.setup do |config|
 end
 ```
 
-### Sudo session
+### Sudo sessions
 
-Using the `sudo_session_duration` you are able to configure the `sudo` session duration (30 minutes by default).
+Using the `sudo_session_duration` option you are able to configure the `sudo` session duration (30 minutes by default).
 
 If you set it to `nil`, your `sudo` session won't expire automatically and you will have to do it manually by using the `reset_sudo_session!` helper.
 
