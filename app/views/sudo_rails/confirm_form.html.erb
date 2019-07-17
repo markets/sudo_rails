@@ -18,6 +18,8 @@
   <% end %>
 </div>
 
-<div class='sudo-tip'>
-  <%= t('sudo_rails.tip', session_duration: time_ago_in_words(SudoRails.sudo_session_duration.ago)).html_safe %>
-</div>
+<% unless SudoRails.sudo_session_duration.nil? %>
+  <div class='sudo-tip'>
+    <%= t('sudo_rails.tip', session_duration: time_ago_in_words(SudoRails.sudo_session_duration.ago)).html_safe %>
+  </div>
+<% end %>

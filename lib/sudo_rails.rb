@@ -30,6 +30,7 @@ module SudoRails
 
     def valid_sudo_session?(started_at)
       return false unless started_at
+      return true if sudo_session_duration.nil?
 
       DateTime.parse(started_at) + sudo_session_duration > Time.zone.now
     end

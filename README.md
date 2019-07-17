@@ -71,6 +71,12 @@ SudoRails.setup do |config|
 end
 ```
 
+### Sudo sessions
+
+Using the `sudo_session_duration` option you are able to configure the `sudo` session duration (30 minutes by default).
+
+If you set it to `nil`, your `sudo` session won't expire automatically and you will have to do it manually by using the `reset_sudo_session!` helper.
+
 ### Styling
 
 Using the `custom_logo`, `primary_color` and `background_color` options, you can customize the confirmation page. In case you want full control of the styles, you can use your own layout (and consequently your own styles too) using the `layout` option.
