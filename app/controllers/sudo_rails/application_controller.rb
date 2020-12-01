@@ -7,7 +7,7 @@ module SudoRails
         session[:sudo_session] = Time.zone.now.to_s
       end
 
-      redirect_to params[:target_path]
+      redirect_to params[:target_path], alert: params[:alert]
     end
 
     private
