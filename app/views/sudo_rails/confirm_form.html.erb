@@ -9,7 +9,6 @@
 <div class='sudo-form'>
   <%= form_tag '/sudo_rails/confirm' do |f| %>
     <%= hidden_field_tag :target_path, params[:target_path] || request.url %>
-    <%= hidden_field_tag :alert, params[:alert] %>
     <%= password_field_tag :password, nil, required: true, placeholder: t('sudo_rails.password') %>
     <%= submit_tag t('sudo_rails.button') %>
   <% end %>

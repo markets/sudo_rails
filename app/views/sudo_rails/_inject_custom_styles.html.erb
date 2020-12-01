@@ -4,6 +4,11 @@
       background-color: <%= SudoRails.background_color %>;
       color: <%= SudoRails.color_contrast(SudoRails.background_color) %>;
     }
+
+    .alert {
+      background-color: <%= SudoRails.color_contrast(SudoRails.background_color) %>;
+      color: <%= SudoRails.background_color %>;
+    }
   <% end %>
 
   <% if SudoRails.primary_color.present? %>
