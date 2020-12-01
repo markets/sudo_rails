@@ -2,7 +2,7 @@ body {
   text-align: center;
   font-family: Helvetica, Arial, sans-serif;
   background-color: #ececec;
-  transform: translateY(20%);
+  margin: 0 auto;
 }
 
 a {
@@ -11,6 +11,10 @@ a {
 
 input {
   -webkit-appearance: none;
+}
+
+.container {
+  transform: translateY(20%);
 }
 
 .sudo-header {
@@ -54,4 +58,10 @@ input {
 .sudo-tip {
   margin-top: 2em;
   font-size: 14px;
+}
+
+.alert {
+  background: #000;
+  color: #fff;
+  padding: 10px;
 }

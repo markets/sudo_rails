@@ -83,6 +83,8 @@ Using the `custom_logo`, `primary_color` and `background_color` options, you can
 
 See some [examples here](support/images/).
 
+**NOTE:** If you are using your own layout, don't forget to show the flash alert. You can do something like [this](app/views/sudo_rails/_flash_alert.html.erb).
+
 ### Confirmation strategy
 
 You should define how to validate the password using the `confirm_strategy` option. It must be a `lambda`, which will receive 2 arguments: the controller instance (`context`) and the password from the user.
