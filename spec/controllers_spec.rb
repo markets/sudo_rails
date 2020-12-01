@@ -43,7 +43,7 @@ RSpec.describe SudoRails::ApplicationController, type: :controller do
 
     expect(SudoRails.valid_sudo_session?(session[:sudo_session])).to eq(true)
     expect(response).to redirect_to @target_path
-
+    expect(flash[:alert]).to be nil
   end
 
   it 'if strategy does not resolve, redirects to target with an invalid sudo session' do
@@ -51,5 +51,6 @@ RSpec.describe SudoRails::ApplicationController, type: :controller do
 
     expect(SudoRails.valid_sudo_session?(session[:sudo_session])).to eq(false)
     expect(response).to redirect_to @target_path
+    expect(flash[:alert]).to eq I18n.t('sudo_rails.invalid_pass')
   end
 end

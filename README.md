@@ -83,7 +83,7 @@ Using the `custom_logo`, `primary_color` and `background_color` options, you can
 
 See some [examples here](support/images/).
 
-**NOTE:** If you are using your own layout, don't forget to show the flash alert. You can do something like [this](app/views/sudo_rails/_flash_alert.html.erb).
+**NOTE** If you are using your own layout, don't forget to render the flash messages in that layout. You can do something like [this](app/views/sudo_rails/_flash_alert.html.erb).
 
 ### Confirmation strategy
 

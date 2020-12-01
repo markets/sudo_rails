@@ -3,7 +3,7 @@ module SudoRails
     before_action :sudo_enabled?
 
     def confirm
-      if request.post? && SudoRails.confirm?(self, params[:password])
+      if SudoRails.confirm?(self, params[:password])
         session[:sudo_session] = Time.zone.now.to_s
       else
         flash[:alert] = I18n.t('sudo_rails.invalid_pass')
