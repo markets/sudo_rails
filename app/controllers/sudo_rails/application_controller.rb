@@ -6,7 +6,7 @@ module SudoRails
       if SudoRails.confirm?(self, params[:password])
         session[:sudo_session] = Time.zone.now.to_s
       else
-        flash[:alert] = I18n.t('sudo_rails.invalid_pass')
+        flash[:alert] = I18n.t('sudo_rails.invalid_pass', locale: params[:locale])
       end
 
       redirect_to params[:target_path]
