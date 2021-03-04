@@ -1,0 +1,93 @@
+<style type="text/css">
+  body {
+    text-align: center;
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #ececec;
+    margin: 0 auto;
+  }
+
+  a {
+    color: #000000;
+  }
+
+  input {
+    -webkit-appearance: none;
+  }
+
+  .sudo-container {
+    transform: translateY(25%);
+  }
+
+  .sudo-header {
+    margin: 2em auto;
+  }
+
+  .sudo-header img {
+    margin-top: -60px;
+    max-width: 280px;
+  }
+
+  .sudo-form {
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 2em;
+    margin: 0 auto;
+    max-width: 340px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .sudo-form input {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    line-height: 2em;
+    padding: 4px;
+    border-radius: 5px;
+    border: 1px solid #ececec;
+  }
+
+  .sudo-form input[type="submit"] {
+    cursor: pointer;
+    margin: 1em auto;
+    width: 60%;
+    padding: 4px;
+    background-color: #ececec;
+    border-radius: 25px;
+    border: none;
+  }
+
+  .sudo-tip {
+    margin-top: 2em;
+    font-size: 14px;
+  }
+
+  .sudo-alert {
+    background: #000000;
+    color: #ffffff;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  <% if SudoRails.background_color.present? %>
+    body {
+      background-color: <%= SudoRails.background_color %>;
+      color: <%= SudoRails.color_contrast(SudoRails.background_color) %>;
+    }
+
+    .sudo-alert {
+      background-color: <%= SudoRails.color_contrast(SudoRails.background_color) %>;
+      color: <%= SudoRails.background_color %>;
+    }
+  <% end %>
+
+  <% if SudoRails.primary_color.present? %>
+    a {
+      color: <%= SudoRails.primary_color %>;
+    }
+
+    .sudo-form input[type="submit"] {
+      background-color: <%= SudoRails.primary_color %>;
+      color: <%= SudoRails.color_contrast(SudoRails.primary_color) %>;
+    }
+  <% end %>
+</style>
