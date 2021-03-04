@@ -55,9 +55,9 @@ SudoRails.setup do |config|
   config.sudo_session_duration = 10.minutes
 
   # Confirmation page styling
-  config.custom_logo = 'logos/medium_dark.png'
-  config.primary_color = '#1A7191'
-  config.background_color = '#1A7191'
+  config.custom_logo = 'https://example.com/logo.png'
+  config.primary_color = '#1a7191'
+  config.background_color = '#1a1a1a'
   config.layout = 'admin'
 
   # Confirmation strategy implementation
