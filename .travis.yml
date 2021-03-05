@@ -3,9 +3,12 @@ language: ruby
 cache: bundler
 rvm:
   - ruby-head
-  - 2.6.3
-  - 2.5.5
+  - 3.0.0
+  - 2.7.2
+  - 2.6.5
+  - 2.5.8
 gemfile:
+  - gemfiles/rails_6.1.gemfile
   - gemfiles/rails_6.0.gemfile
   - gemfiles/rails_5.2.gemfile
 matrix:
