@@ -55,7 +55,7 @@ SudoRails.setup do |config|
   config.sudo_session_duration = 10.minutes
 
   # Confirmation page styling
-  config.custom_logo = 'https://example.com/logo.png'
+  config.custom_logo = '/images/logo_medium.png'
   config.primary_color = '#1a7191'
   config.background_color = '#1a1a1a'
   config.layout = 'admin'
@@ -81,7 +81,7 @@ If you set it to `nil`, your `sudo` session won't expire automatically and you w
 
 Using the `custom_logo`, `primary_color` and `background_color` options, you can customize the confirmation page. In case you want full control of the styles, you can use your own layout (and consequently your own styles too) using the `layout` option.
 
-See some [examples here](support/images/).
+See some :camera: [examples here](support/images/).
 
 **NOTE** If you are using your own layout, don't forget to render the flash messages in that layout. You can do something like [this](app/views/sudo_rails/_flash_alert.html.erb).
 
