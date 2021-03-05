@@ -13,9 +13,5 @@ module SudoRails
         post '/sudo_rails/confirm' => 'sudo_rails/application#confirm'
       end
     end
-
-    config.assets.precompile << %w(
-      sudo_rails/application.css
-    )
   end
 end
