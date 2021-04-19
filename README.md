@@ -16,6 +16,8 @@ end
 
 *Inspired by [Unix `sudo` command](https://en.wikipedia.org/wiki/Sudo) and [GitHub Sudo mode](https://help.github.com/en/articles/sudo-mode).*
 
+![](support/images/cover.png)
+
 ## Installation
 
 Add this line to your Gemfile and then execute `bundle install`:
@@ -81,7 +83,7 @@ If you set it to `nil`, your `sudo` session won't expire automatically and you w
 
 Using the `custom_logo`, `primary_color` and `background_color` options, you can customize the confirmation page. In case you want full control of the styles, you can use your own layout (and consequently your own styles too) using the `layout` option.
 
-See some :camera: [examples here](support/images/).
+See some :camera: [examples here](support/images/examples/).
 
 **NOTE** If you are using your own layout, don't forget to render the flash messages in that layout. You can do something like [this](app/views/sudo_rails/_flash_alert.html.erb).
 
