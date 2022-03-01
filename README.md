@@ -1,7 +1,7 @@
 # Sudo Rails
 
 [![Gem](https://img.shields.io/gem/v/sudo_rails.svg?style=flat-square)](https://rubygems.org/gems/sudo_rails)
-[![Build Status](https://travis-ci.com/markets/sudo_rails.svg?branch=master)](https://travis-ci.com/markets/sudo_rails)
+[![Build Status](https://github.com/markets/sudo_rails/workflows/CI/badge.svg)](https://github.com/markets/sudo_rails/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/322350adc7ab052beccb/maintainability)](https://codeclimate.com/github/markets/sudo_rails/maintainability)
 
 > Sudo mode for your Rails controllers
