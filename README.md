@@ -93,6 +93,8 @@ You should define how to validate the password using the `confirm_strategy` opti
 
 By default, the gem ships with `Devise` and `Clearance` integration. Check it [here](lib/sudo_rails/integrations/).
 
+:warning: In order to autoload `Devise` or `Clearance` strategy propertly, place `sudo_rails` gem after it at the Gemfile.
+
 Implementation examples:
 
 ```ruby
