@@ -85,7 +85,7 @@ Using the `custom_logo`, `primary_color` and `background_color` options, you can
 
 See some :camera: [examples here](support/images/examples/).
 
-**NOTE** If you are using your own layout, don't forget to render the flash messages in that layout. You can do something like [this](app/views/sudo_rails/_flash_alert.html.erb).
+> ℹ️ If you are using your own layout, don't forget to render the flash messages in that layout. You can do something [like this](app/views/sudo_rails/_flash_alert.html.erb).
 
 ### Confirmation strategy
 
@@ -93,7 +93,7 @@ You should define how to validate the password using the `confirm_strategy` opti
 
 By default, the gem ships with `Devise` and `Clearance` integration. Check it [here](lib/sudo_rails/integrations/).
 
-:warning: In order to autoload `Devise` or `Clearance` strategy propertly, place `sudo_rails` gem after it at the Gemfile.
+> ℹ️ In order to autoload `Devise` or `Clearance` strategy properly, you should place the `sudo_rails` gem after them in the Gemfile.
 
 Implementation examples:
 
