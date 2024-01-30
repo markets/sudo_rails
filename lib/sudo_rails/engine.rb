@@ -10,7 +10,7 @@ module SudoRails
 
     initializer 'sudo_rails.routes' do |app|
       app.routes.append do
-        post '/sudo_rails/confirm' => 'sudo_rails/application#confirm'
+        post '/sudo_rails/confirm' => 'sudo_rails/application#confirm', as: :sudo_rails_confirm
       end
     end
   end

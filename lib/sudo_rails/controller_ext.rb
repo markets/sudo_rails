@@ -3,7 +3,7 @@ module SudoRails
     extend ActiveSupport::Concern
 
     included do
-      layout SudoRails.layout
+      layout SudoRails.get_layout
     end
 
     class_methods do

@@ -5,10 +5,10 @@ module SudoRails
     end
 
     def get_render
-      return SudoRails.render if SudoRails.render.is_a?(String)
+      # A proc can be passed which on #call can return a renderable view.
       return SudoRails.render.call if SudoRails.render.is_a?(Proc)
 
-      return 'sudo_rails/confirm_form'
+      return SudoRails.render.presence || 'sudo_rails/confirm_form'
     end
 
     def color_contrast(hex_color)

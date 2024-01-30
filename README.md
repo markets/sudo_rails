@@ -61,6 +61,7 @@ SudoRails.setup do |config|
   config.primary_color = '#1a7191'
   config.background_color = '#1a1a1a'
   config.layout = 'admin'
+  config.render = 'some_other_view' # Or a Proc which can return a renderable view on call.
 
   # Confirmation strategy implementation
   config.confirm_strategy = -> (context, password) {
