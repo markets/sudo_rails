@@ -4,6 +4,13 @@ module SudoRails
       SudoRails.layout || 'sudo_rails/application'
     end
 
+    def get_render
+      return SudoRails.render if SudoRails.render.is_a?(String)
+      return SudoRails.render.call if SudoRails.render.is_a?(Proc)
+
+      return 'sudo_rails/confirm_form'
+    end
+
     def color_contrast(hex_color)
       return nil unless hex_color.include?('#')
 
