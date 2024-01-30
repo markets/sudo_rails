@@ -3,7 +3,7 @@ module SudoRails
     isolate_namespace SudoRails
 
     initializer "sudo_rails.controller_ext" do
-      ActiveSupport.on_load(:action_controller) do
+      ActiveSupport.on_load(:action_controller_base) do
         include SudoRails::ControllerExt
       end
     end
