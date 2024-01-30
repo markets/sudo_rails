@@ -18,8 +18,7 @@ RSpec.describe ApplicationController, type: :controller do
 
     it 'renders confirmation form if engine is enabled and custom render and layout is being used', :focus do
       SudoRails.render = -> { Sudo::ConfirmView.new }
-      SudoRails.layout = -> { PhlexLayout }
-      described_class.layout SudoRails.get_layout # TODO: Find a way to dynamically update ActionController::Base for this test.
+      SudoRails.layout = ->(*) { PhlexLayout }
 
       get :index
 
