@@ -8,7 +8,7 @@ module SudoRails
           next unless SudoRails.enabled
           next if SudoRails.valid_sudo_session?(session[:sudo_session])
 
-          render SudoRails.get_render, layout: SudoRails.get_layout
+          render 'sudo_rails/confirm_form', layout: SudoRails.get_layout
         end
       end
     end

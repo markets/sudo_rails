@@ -14,8 +14,7 @@ module SudoRails
                   :layout,
                   :custom_logo,
                   :primary_color,
-                  :background_color,
-                  :render
+                  :background_color
 
     def setup
       yield(self) if block_given?

@@ -15,15 +15,6 @@ RSpec.describe ApplicationController, type: :controller do
 
       expect(response.body).to match(I18n.t('sudo_rails.page_header'))
     end
-
-    it 'renders confirmation form if engine is enabled and custom render and layout is being used', :focus do
-      SudoRails.render = -> { Sudo::ConfirmView.new }
-      SudoRails.layout = ->(*) { PhlexLayout }
-
-      get :index
-
-      expect(response.body).to eq('<h1>Layout in Phlex</h1><h3>it works!</h3>')
-    end
   end
 
   describe 'provided helpers' do
