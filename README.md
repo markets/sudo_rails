@@ -87,6 +87,8 @@ See some :camera: [examples here](support/images/examples/).
 
 > ℹ️ If you are using your own layout, don't forget to render the flash messages in that layout. You can do something [like this](app/views/sudo_rails/_flash_alert.html.erb).
 
+You can also override the view by calling the `sudo_rails:view` generator. This will create a copy of the view file at `app/views/sudo_rails/confirm_form.html.erb` which can be later modified as per your requirements.
+
 ### Confirmation strategy
 
 You should define how to validate the password using the `confirm_strategy` option. It must be a `lambda`, which will receive 2 arguments: the controller instance (`context`) and the password from the user.
