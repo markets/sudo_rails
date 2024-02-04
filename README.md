@@ -73,6 +73,8 @@ SudoRails.setup do |config|
 end
 ```
 
+Use the provided `sudo_rails:config` generator to create a default config file under your *initializers* folder.
+
 ### Sudo sessions
 
 Using the `sudo_session_duration` option you are able to configure the `sudo` session duration (30 minutes by default).
