@@ -7,8 +7,15 @@ module SudoRails
   class << self
     include Styling
 
+    AVAILABLE_CALLBACKS = [
+      :invalid_sudo_session,
+      :new_sudo_session,
+      :invalid_verification
+    ]
+
     attr_accessor :enabled,
                   :confirm_strategy,
+                  :callbacks,
                   :sudo_session_duration,
                   :reset_pass_link,
                   :layout,
@@ -24,7 +31,15 @@ module SudoRails
       strategy = confirm_strategy
       raise(ArgumentError, 'Please, provide an strategy via SudoRails.confirm_strategy') unless strategy
 
-      strategy.call(context, password)
+      confirmed = strategy.call(context, password)
+
+      if confirmed
+        SudoRails.run_callback(:new_sudo_session, context)
+      else
+        SudoRails.run_callback(:invalid_verification, context)
+      end
+
+      confirmed
     end
 
     def valid_sudo_session?(started_at)
@@ -33,10 +48,23 @@ module SudoRails
 
       DateTime.parse(started_at) + sudo_session_duration > Time.zone.now
     end
+
+    def run_callback(type, context)
+      type = type.to_sym
+      if !AVAILABLE_CALLBACKS.include?(type)
+        raise(ArgumentError, "Please, provide a valid callback: #{AVAILABLE_CALLBACKS.to_sentence}")
+      end
+
+      callback = callbacks[type]
+      return unless callback
+
+      callback.call(context)
+    end
   end
 
   self.enabled = true
   self.sudo_session_duration = 30.minutes
+  self.callbacks = {}
 end
 
 require 'sudo_rails/integrations/devise'    if defined?(Devise)

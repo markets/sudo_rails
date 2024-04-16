@@ -22,7 +22,8 @@ class SudoRails::ConfigGenerator < Rails::Generators::Base
 
         ### Reset password link
         # config.reset_pass_link = '/users/password/new'
-      end
+
+        ### TODO: add callback
     RUBY
   end
 end
