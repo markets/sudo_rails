@@ -70,6 +70,18 @@ SudoRails.setup do |config|
 
   # Reset password link
   config.reset_pass_link = '/users/password/new'
+
+  # Subscribe to different events
+  config.callbacks = {
+    invalid_sudo_session: -> (context) {
+      user = context.current_user
+      AuthService.send_code(user)
+    },
+    invalid_confirmation: -> (context) {
+      user = context.current_user
+      Rails.logger.warn("[SUDO_RAILS] invalid password for #{user.email}")
+    }
+  }
 end
 ```
 
@@ -114,14 +126,49 @@ config.confirm_strategy = -> (context, password) {
   user.authenticate(password)
 }
 
-# Other custom implementations
+# Another example, using ENV vars
 config.confirm_strategy = -> (context, password) {
   user = context.current_user
   user.admin? && password == ENV['SUPER_SECRET_PASSWORD']
 }
+```
 
-config.confirm_strategy = -> (context, password) {
-  Auth.call(context.current_user.email, password)
+### Callbacks
+
+You can subscribe to different lifecycle events via the `callbacks` option. Each callback must be a `lambda`, which will receive 1 argument, the controller instance (`context`).
+
+You can subscribe to the following events:
+
+- `:invalid_sudo_session`: fired when the confirmation page is rendered, because there is no valid sudo session. Be careful! If the page is re-submitted or the password is invalid, the confirmation page will be rendered again and this event will be fired again too.
+- `:new_sudo_session`: fired when a new sudo session is started.
+- `:invalid_confirmation`: fired when an invalid password is submitted.
+
+This can be really useful for example for instrumentation or logging:
+
+```ruby
+config.callbacks = {
+  invalid_confirmation: -> (context) {
+    user = context.current_user
+    request = context.request
+
+    Rails.logger.warn("[SUDO_RAILS] Invalid verification: #{user.email} - #{request.remote_ip}")
+  }
+}
+```
+
+Or you can even implement custom workflows along with the `confirm_strategy` option. Like for example, using your 2FA system instead of the session password:
+
+```ruby
+config.callbacks = {
+  invalid_sudo_session: -> (context) {
+    user = context.current_user
+    AuthService.send_code(user)
+  }
+}
+
+config.confirm_strategy = -> (context, code) {
+  user = context.current_user
+  AuthService.validate_code(user, code)
 }
 ```
 

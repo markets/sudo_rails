@@ -22,6 +22,13 @@ class SudoRails::ConfigGenerator < Rails::Generators::Base
 
         ### Reset password link
         # config.reset_pass_link = '/users/password/new'
+
+        ### Subscribe to different events
+        # config.callbacks = {
+        #   new_sudo_session: -> (context) { Rails.logger.warn("new sudo session created") },
+        #   invalid_sudo_session: -> (context) { Rails.logger.warn("invalid sudo session") },
+        #   invalid_confirmation: -> (context) { Rails.logger.warn("invalid password in sudo session") }
+        # }
       end
     RUBY
   end
