@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## Next
+## [0.9.0]
 
 - Callbacks: subscribe to different events with custom callable objects (#18)
 
@@ -30,6 +30,7 @@ All notable changes to this project will be documented in this file.
 
 - "Infinite" sudo sessions (#8)
 
+[0.9.0]: https://github.com/markets/sudo_rails/compare/v0.8.0...v0.9.0
 [0.8.0]: https://github.com/markets/sudo_rails/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/markets/sudo_rails/compare/v0.6.1...v0.7.0
 [0.6.1]: https://github.com/markets/sudo_rails/compare/v0.6.0...v0.6.1
