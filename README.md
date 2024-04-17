@@ -71,19 +71,15 @@ SudoRails.setup do |config|
   # Reset password link
   config.reset_pass_link = '/users/password/new'
 
-  # Callbacks to subscribe to different events
+  # Subscribe to different events
   config.callbacks = {
-    new_sudo_session: -> (context) {
-      user = context.current_user
-      Rails.logger.warn("[SUDO_RAILS] new sudo session created: #{user.email}")
-    },
     invalid_sudo_session: -> (context) {
       user = context.current_user
       AuthService.send_code(user)
     },
     invalid_verification: -> (context) {
       user = context.current_user
-      Rails.logger.warn("[SUDO_RAILS] invalid password: #{user.email}")
+      Rails.logger.warn("[SUDO_RAILS] invalid password for #{user.email}")
     }
 end
 ```
@@ -138,7 +134,9 @@ config.confirm_strategy = -> (context, password) {
 
 ### Callbacks
 
-You can subscribe to different events via the `callbacks` option. Each callback must be a `lambda`, which will receive 1 argument: the controller instance (`context`). You can subscribe to the following events:
+You can subscribe to different lifecycle events via the `callbacks` option. Each callback must be a `lambda`, which will receive 1 argument, the controller instance (`context`).
+
+You can subscribe to the following events:
 
 - `:invalid_sudo_session`: fired when the confirmation page is rendered, because there is no valid sudo session. Be careful! If the page is re-submitted or the password is invalid, the confirmation page will be rendered again and this event will be fired again too.
 - `:new_sudo_session`: fired when a new sudo session is started.
