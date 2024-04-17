@@ -4,7 +4,7 @@ module SudoRails
 
     def confirm
       if SudoRails.confirm?(self, params[:password])
-        session[:sudo_session] = Time.zone.now.to_s
+        extend_sudo_session!
       else
         flash[:alert] = I18n.t('sudo_rails.invalid_pass', locale: params[:locale])
       end
