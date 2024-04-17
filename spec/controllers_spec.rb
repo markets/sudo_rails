@@ -16,14 +16,14 @@ RSpec.describe ApplicationController, type: :controller do
       expect(response.body).to match(I18n.t('sudo_rails.page_header'))
     end
 
-    it 'runs the invalid_sudo_session callback' do
+    it 'runs the configured "invalid_sudo_session" callback' do
       SudoRails.callbacks = {
-        invalid_sudo_session: -> (_) { puts "Invalid sudo session!" }
+        invalid_sudo_session: -> (context) { Rails.logger.warn("Invalid sudo session: #{context.request.remote_ip}") }
       }
 
-      expect {
-        get :index
-      }.to output("Invalid sudo session!\n").to_stdout
+      expect(Rails.logger).to receive(:warn).with("Invalid sudo session: 0.0.0.0")
+
+      get :index
     end
   end
 

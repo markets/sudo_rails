@@ -13,12 +13,9 @@ RSpec.describe SudoRails do
     expect(SudoRails.confirm?(nil, 'foo')).to eq true
     expect(SudoRails.confirm?(nil, 'bar')).to eq false
 
-    expect {
-      SudoRails.confirm?(nil, 'foo')
-    }.to output("New sudo session\n").to_stdout
-    expect {
-      SudoRails.confirm?(nil, 'bar')
-    }.to output("Invalid pass\n").to_stdout
+    # Check also expected callbacks
+    expect { SudoRails.confirm?(nil, 'foo') }.to output("New sudo session\n").to_stdout
+    expect { SudoRails.confirm?(nil, 'bar') }.to output("Invalid pass\n").to_stdout
   end
 
   it "#valid_sudo_session?" do
@@ -33,14 +30,6 @@ RSpec.describe SudoRails do
   end
 
   it "#run_callback" do
-    SudoRails.callbacks = {
-      new_sudo_session: -> (_) { puts "foo" }
-    }
-
-    expect {
-      SudoRails.run_callback(:new_sudo_session, nil)
-    }.to output("foo\n").to_stdout
-
     expect {
       SudoRails.run_callback(:invalid_callback, nil)
     }.to raise_error(/provide a valid callback/)
