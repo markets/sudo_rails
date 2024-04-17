@@ -81,6 +81,7 @@ SudoRails.setup do |config|
       user = context.current_user
       Rails.logger.warn("[SUDO_RAILS] invalid password for #{user.email}")
     }
+  }
 end
 ```
 
