@@ -27,7 +27,7 @@ class SudoRails::ConfigGenerator < Rails::Generators::Base
         # config.callbacks = {
         #   new_sudo_session: -> (context) { Rails.logger.warn("new sudo session created") },
         #   invalid_sudo_session: -> (context) { Rails.logger.warn("invalid sudo session") },
-        #   invalid_verification: -> (context) { Rails.logger.warn("invalid password in sudo session") }
+        #   invalid_confirmation: -> (context) { Rails.logger.warn("invalid password in sudo session") }
         # }
       end
     RUBY

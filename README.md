@@ -77,7 +77,7 @@ SudoRails.setup do |config|
       user = context.current_user
       AuthService.send_code(user)
     },
-    invalid_verification: -> (context) {
+    invalid_confirmation: -> (context) {
       user = context.current_user
       Rails.logger.warn("[SUDO_RAILS] invalid password for #{user.email}")
     }
@@ -141,13 +141,13 @@ You can subscribe to the following events:
 
 - `:invalid_sudo_session`: fired when the confirmation page is rendered, because there is no valid sudo session. Be careful! If the page is re-submitted or the password is invalid, the confirmation page will be rendered again and this event will be fired again too.
 - `:new_sudo_session`: fired when a new sudo session is started.
-- `:invalid_verification`: fired when an invalid password is submitted.
+- `:invalid_confirmation`: fired when an invalid password is submitted.
 
 This can be really useful for example for instrumentation or logging:
 
 ```ruby
 config.callbacks = {
-  invalid_verification: -> (context) {
+  invalid_confirmation: -> (context) {
     user = context.current_user
     request = context.request
 

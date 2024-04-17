@@ -6,7 +6,7 @@ RSpec.describe SudoRails do
       }
       config.callbacks = {
         new_sudo_session: -> (_) { puts "New sudo session" },
-        invalid_verification: -> (_) { puts "Invalid pass" }
+        invalid_confirmation: -> (_) { puts "Invalid pass" }
       }
     end
 

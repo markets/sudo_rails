@@ -10,7 +10,7 @@ module SudoRails
     AVAILABLE_CALLBACKS = [
       :invalid_sudo_session,
       :new_sudo_session,
-      :invalid_verification
+      :invalid_confirmation
     ]
 
     attr_accessor :enabled,
@@ -36,7 +36,7 @@ module SudoRails
       if confirmed
         SudoRails.run_callback(:new_sudo_session, context)
       else
-        SudoRails.run_callback(:invalid_verification, context)
+        SudoRails.run_callback(:invalid_confirmation, context)
       end
 
       confirmed
